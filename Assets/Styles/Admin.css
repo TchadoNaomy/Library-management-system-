@@ -12,8 +12,8 @@
     left: 0;
     bottom: 0;
     width: 250px;
-    background-color: grey;
-    color: white;
+    background-color: #2C3E50;  /* Dark blue-gray */
+    color: #ECF0F1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,8 +68,8 @@
 }
 
 .sideBar nav ul li:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #e0e0e0;
+    background-color: #34495E;  /* Slightly lighter blue-gray */
+    border-color: #3498DB;
 }
 
 .sideBar footer{
@@ -92,7 +92,14 @@
     transform: translateX(0);
 }
 
-/* wnd of side bar stylings*/
+.active{
+    background-color: #3498DB;  /* Bright blue */
+    color: #ffffff;
+    border-color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* end of side bar stylings*/
 
 
 /* Main content area styles */
@@ -100,14 +107,14 @@
     margin-left: 250px;
     padding: 1rem;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #F5F6FA;
     transition: margin-left 0.3s ease;
+   
 }
 
 .mainContent nav{
     width: 100%;
     height: fit-content;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,7 +124,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #fff;
+    background-color: #ffffff;  /* Clean white */
+    color: #2C3E50;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
 }
@@ -127,13 +135,13 @@
     padding-left: 20px;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
+    color: #2C3E50;
 }
 
 .mainContent nav .notificationBox{
     height: 50px;
     width: 50px;
-    background-color: rgb(165, 164, 164);
+    background-color: #3498DB;
     margin: 5px 10px 5px 0px;
     border-radius: 25px;
     display: flex;
@@ -141,6 +149,12 @@
     justify-content: center;
     position: relative;
     cursor: pointer;
+}
+
+.mainContent nav .notificationBox:active{
+    background-color: rgb(165, 164, 164);
+    transform: scale(0.9);
+    outline: none;
 }
 
 .mainContent nav .notificationBox .counter{
@@ -153,8 +167,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
-    background-color: red;
+    border: 1px solid #E74C3C;
+    background-color: #E74C3C;  /* Warning red */
     position: absolute;
     /* top: -8px;
     right: -8px;
@@ -177,13 +191,19 @@
 .mainContent nav .mobileMenu{
     display: none;
     cursor: pointer;
-    color: rgb(255, 254, 254);
     height: 50px;
     width: 50px;
     align-items: center;
     justify-content: center;
     border-radius: 25px;
+    background-color: #3498DB;  /* Bright blue */
+    color: #ffffff;
+}
+
+.mainContent nav .mobileMenu:active{
     background-color: rgb(165, 164, 164);
+    transform: scale(0.9);
+    outline: none;
 }
 
 .card-container {
@@ -196,7 +216,7 @@
 }
 
 .card {
-    background: white;
+    background: #ffffff;  /* Clean white */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -215,12 +235,12 @@
 }
 
 .card i {
-    color: #007bff;
+    color: #3498DB;
     margin-bottom: 1rem;
 }
 
 .card h3 {
-    color: #333;
+    color: #2C3E50; 
     margin: 1rem 0;
     font-size: 1.2rem;
 }
@@ -228,53 +248,45 @@
 .card .count {
     font-size: 2rem;
     font-weight: bold;
-    color: #007bff;
+    color: #3498DB;
     margin: 0;
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1200px) {
-    .card-container {
-        width: 95%;
-        gap: 1.5rem;
+@media screen and (min-width: 1201px) {
+    .sideBar {
+        width: 250px;
+    }
+    .mainContent {
+        margin-left: 250px;
+    }
+}
+
+@media screen and (min-width: 820px) and (max-width: 1024px) {
+    .sideBar {
+        width: 300px;
+    }
+    .mainContent {
+        margin-left: 0px;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .sideBar{
+    .sideBar {
         transform: translateX(-100%);
         box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
     }
     .card-container {
+        width: 95%;
+        gap: 1.5rem;
         grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .mainContent {
-        margin-left: 200px;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .mainContent {
-        margin-left: 200px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    /* .sideBar {
-        transform: translateX(-100%);
-    } */
-    
     .mainContent {
         margin-left: 0;
     }
-    
-    .card-container {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
     .card {
         padding: 1.5rem;
         min-height: 180px;
@@ -285,9 +297,16 @@
     .card-container {
         padding: 0.5rem;
     }
-    
     .card {
         padding: 1rem;
         min-height: 150px;
+    }  
+}
+
+@media screen and (max-width:375px) {
+    .footer{
+        font-size: 0.1rem;
+        padding: 0px; 
+        margin: 0px;
     }
 }

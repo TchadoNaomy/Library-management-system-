@@ -17,9 +17,9 @@
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="../Admin/Admin.php"><i class="fas fa-qrcode" ></i>  Dashboard </a></li>
+                <li ><a href="../Admin/Admin.php"><i class="fas fa-qrcode" ></i>  Dashboard </a></li>
                 <li><a href="../Admin/Acount.php"><i class="fas fa-users-gear" class="icon"></i>  Manage Acounts </a></li>
-                <li><a href="../Admin/manageStock.php"><i class="fas fa-boxes-stacked" class="icon"></i>  Manage Stock </a></li>
+                <li class="active"><a href="../Admin/manageStock.php"><i class="fas fa-boxes-stacked" class="icon"></i>  Manage Stock </a></li>
                 <li><a href="../Admin/Reports.php"><i class="fas fa-chart-bar" class="icon"></i>  Reports </a></li>
                 <li><a href="../Admin/Settings.php"><i class="fas fa-gear" class="icon"></i>  Settings </a></li>
                 <li><a href="../Admin/Reports.php"><i class="fas fa-sign-out-alt" ></i>  LogOut </a></li>
@@ -49,28 +49,7 @@
             </div>
         </nav>
         <main>
-            <div class="card-container">
-                <div class="card">
-                    <i class="fas fa-users fa-3x"></i>
-                    <h3>Total Users</h3>
-                    <p class="count">0</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-book fa-3x"></i>
-                    <h3>Total Books</h3>
-                    <p class="count">0</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-book-open fa-3x"></i>
-                    <h3>Books Borrowed</h3>
-                    <p class="count">0</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-clock fa-3x"></i>
-                    <h3>Pending Returns</h3>
-                    <p class="count">0</p>
-                </div>
-            </div>
+            books table to be displayed here
         </main>
     </div>
 </body>

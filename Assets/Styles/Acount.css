@@ -1,0 +1,68 @@
+.mainContent main .search{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mainContent main .search input{
+    height: 40px;
+    width: 400px;
+    text-align: center;
+    margin-left:750px ;
+    border-radius: 20px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.mainContent main .search button{
+    padding: 5px 10px;
+    margin-left: 5px;
+    border-radius: 100%;
+    border: 1px solid gray;
+    background-color: rgb(236, 236, 236);
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+.mainContent main .search button:hover{
+    background-color: lightgray;
+}
+
+.mainContent main .search button:active{
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.mainContent main .tabContainer{
+    height: 100px;
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.mainContent main .tabContainer table{
+    border: 1px solid;
+    width: 500px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border-spacing: 0;
+}
+
+.mainContent main .tabContainer table th{
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+}
+
+.mainContent main .tabContainer table th,td{
+    padding: 20px;
+}
+
+.mainContent main .tabContainer table th tr:nth-child(even){
+    background-color: grey;
+
+}
