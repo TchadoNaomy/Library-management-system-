@@ -24,15 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTitleFromActiveLink();
 
     // Optional: Update when clicking different nav items
-    const navItems = document.querySelectorAll('.sideBar nav ul li');
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
+    // const navItems = document.querySelectorAll('.sideBar nav ul li');
+    // navItems.forEach(item => {
+    //     item.addEventListener('click', function() {
             // Remove active class from all items
-            navItems.forEach(i => i.classList.remove('active'));
+            // navItems.forEach(i => i.classList.remove('active'));
             // Add active class to clicked item
-            this.classList.add('active');
+            // this.classList.add('active');
             // Update title
-            updateTitleFromActiveLink();
-        });
-    });
+    //         updateTitleFromActiveLink();
+    //     });
+    // });
 });
