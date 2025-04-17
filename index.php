@@ -11,12 +11,15 @@
         <h1>Welcome to My Website</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Catalog</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
+        <div class="buttonContainer">
+           <a href="Register.php"><button class="signupbtn" >SignUp</button></a> 
+        </div>
     </header>
         <main>
             <section>

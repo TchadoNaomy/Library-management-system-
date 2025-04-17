@@ -1,0 +1,298 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.signUp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f4f4f4;  /* Matches dashboard secondary background */
+}
+
+.signUp .signUpform{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #34495E;  /* Matches dashboard sidebar color */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    color: #ffffff;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.signUp .signUpform .inputContainer{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    /* background-color: grey; */
+    margin-top: 20px;
+    align-items: center;
+    border-bottom: 2px solid #3498DB;  /* Matches dashboard accent color */
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.signUp .signUpform .inputContainer label{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items:left; 
+    justify-content: left;
+    /* margin-left: 5px; */
+    /* border: none; */
+}
+
+.signUp .signUpform .inputContainer label input{
+    width: 95%;
+    height: 32px;
+    border: none;
+    padding-left: 10px;
+    outline: none;
+    background-color: transparent;
+    color: #ffffff;  /* For better contrast on dark background */
+}
+
+.signUp .signUpform .inputContainer label input:focus{
+    background-color: rgba(255, 255, 255, 0.1);  /* Subtle highlight */
+}
+
+.signUp .signUpform .inputContainer label input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+    text-align: left;
+}
+
+.error-message.general {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 8px;
+    background-color: rgba(255, 68, 68, 0.1);
+    border-radius: 4px;
+}
+
+.signUp .signUpform .signupbtn{
+    margin-top: 20px;
+    padding: 10px 40px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #3498DB;  /* Matches dashboard accent color */
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.signUp .signUpform .signupbtn:hover {
+    background-color: #2980b9;  /* Darker shade for hover */
+}
+
+.togglebtn{
+    margin-top: 20px;
+    margin-left: 5px;
+    padding: 10px 40px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #3498DB;  /* Matches dashboard accent color */
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.togglebtn:hover {
+    background-color: #2980b9;  /* Darker shade for hover */
+}
+
+i{
+    cursor: pointer;
+}
+
+/* login for styling */
+
+.signUp .loginform{
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #34495E;  /* Matches dashboard sidebar color */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    color: #ffffff;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.signUp .loginform .inputContainer{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    /* background-color: grey; */
+    margin-top: 20px;
+    align-items: center;
+    border-bottom: 2px solid #3498DB;  /* Matches dashboard accent color */
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.signUp .loginform .inputContainer label{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items:left; 
+    justify-content: left;
+    /* margin-left: 5px; */
+    /* border: none; */
+}
+
+.signUp .loginform .inputContainer label input{
+    width: 95%;
+    height: 32px;
+    border: none;
+    padding-left: 10px;
+    outline: none;
+    background-color: transparent;
+    color: #ffffff;  /* For better contrast on dark background */
+}
+
+.signUp .loginform .inputContainer label input:focus{
+    background-color: rgba(255, 255, 255, 0.1);  /* Subtle highlight */
+}
+
+.signUp .loginform .inputContainer label input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.signUp .loginform .loginbtn{
+    margin-top: 20px;
+    padding: 10px 40px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #3498DB;  /* Matches dashboard accent color */
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.signUp .loginform .loginbtn:hover {
+    background-color: #2980b9;  /* Darker shade for hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .signUp .signUpform,
+    .signUp .loginform {
+        width: 90%;
+        max-width: none;
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .signUp .signUpform .inputContainer,
+    .signUp .loginform .inputContainer {
+        height: 45px;
+    }
+
+    .signUp .signUpform .inputContainer label input,
+    .signUp .loginform .inputContainer label input {
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .signUp .signUpform .signupbtn,
+    .signUp .loginform .loginbtn,
+    .togglebtn {
+        padding: 8px 30px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .signUp .signUpform,
+    .signUp .loginform {
+        width: 85%;
+        padding: 10px;
+    }
+
+    .signUp .signUpform .inputContainer,
+    .signUp .loginform .inputContainer {
+        height: 40px;
+    }
+
+    .signUp .signUpform .inputContainer label input,
+    .signUp .loginform .inputContainer label input {
+        height: 24px;
+        font-size: 13px;
+        padding-left: 5px;
+    }
+
+    .signUp .signUpform .signupbtn,
+    .signUp .loginform .loginbtn,
+    .togglebtn {
+        padding: 8px 25px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .signUp .signUpform,
+    .signUp .loginform {
+        width: 75%;
+        padding: 8px;
+    }
+
+    .signUp .signUpform .inputContainer,
+    .signUp .loginform .inputContainer {
+        margin-top: 15px;
+    }
+
+    .signUp .signUpform .signupbtn,
+    .signUp .loginform .loginbtn,
+    .togglebtn {
+        padding: 7px 20px;
+        font-size: 12px;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .signUp .signUpform,
+    .signUp .loginform {
+        max-width: 450px;
+        padding: 25px;
+    }
+
+    .signUp .signUpform .inputContainer label input,
+    .signUp .loginform .inputContainer label input {
+        font-size: 16px;
+    }
+
+    .signUp .signUpform .signupbtn,
+    .signUp .loginform .loginbtn,
+    .togglebtn {
+        padding: 12px 45px;
+        font-size: 16px;
+    }
+}

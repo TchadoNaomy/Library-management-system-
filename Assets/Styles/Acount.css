@@ -1,3 +1,13 @@
+/* Base Variables */
+:root {
+    --primary-color: #3498DB;
+    --primary-dark: #2980b9;
+    --secondary-color: #34495E;
+    --table-border: #156498;
+    --shadow-color: rgba(0,0,0,0.1);
+    --transition-default: all 0.3s ease;
+}
+
 /* Shared CSS between Account management page and Book management page */
 
 .mainContent main .search{
@@ -5,16 +15,26 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
 }
 
 .mainContent main .search input{
     height: 40px;
     width: 400px;
     text-align: center;
-    margin-left:750px ;
     border-radius: 20px;
-    border: 1px solid #3498DB;
+    border: 1px solid var(--primary-color);
     outline: none;
+    padding: 0 20px;
+    font-size: 16px;
+    transition: var(--transition-default);
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.mainContent main .search input:focus {
+    border-color: var(--primary-dark);
+    box-shadow: 0 2px 10px rgba(52, 152, 219, 0.3);
 }
 
 .mainContent main .search .search-btn{
@@ -24,15 +44,15 @@
     padding: 13px;
     border-radius: 50%;
     border: none;
-    background-color: #3498DB;
+    background-color: var(--primary-color);
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition-default);
     margin-left: 5px;
 }
 
 .mainContent main .search .search-btn:hover{
-    background-color: #2980b9;
+    background-color: var(--primary-dark);
     transform: scale(1.05);
 }
 
@@ -48,40 +68,52 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: aqua; */
+    scroll-behavior: smooth;
 }
 
 .mainContent main .tabContainer .table{
-    border: 1px solid;
     width: 95%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     border-spacing: 0;
+    box-shadow: 0 2px 15px var(--shadow-color);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .mainContent main .tabContainer .table th{
     text-align: center;
-    background-color: #34495E;
+    background-color: var(--secondary-color);
     color: #fff;
+    padding: 20px;
+    border: 1px solid var(--table-border);
 }
 
 .mainContent main .tabContainer .table th,td{
     padding: 20px;
+    border: 1px solid var(--table-border);
 }
 
 .mainContent main .tabContainer .table tr td:nth-child(even){
-    background-color: #3498DB;
-
+    background-color: var(--primary-color);
 }
 .mainContent main .tabContainer .table tr td:nth-child(odd){
-    background-color: #156498;
+    background-color: var(--table-border);
+}
 
+.mainContent main .tabContainer .table tr:hover td {
+    background-color: rgba(52, 152, 219, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Add zebra striping for better readability */
+.mainContent main .tabContainer .table tbody tr:nth-child(even) td {
+    background-color: rgba(52, 152, 219, 0.05);
 }
 
 /* Responsive Design */
 @media screen and (max-width: 1201px) {
     .mainContent main .search input {
-        margin-left: 500px;
         width: 300px;
     }
 
@@ -93,7 +125,6 @@
 
 @media screen and (max-width: 992px) {
     .mainContent main .search input {
-        margin-left: 300px;
         width: 250px;
     }
 
@@ -112,7 +143,6 @@
     }
 
     .mainContent main .search input {
-        margin-left: 0;
         width: 80%;
     }
 
@@ -136,7 +166,7 @@
 
     .mainContent main .tabContainer .table {
         font-size: 12px;
-        min-width: 400px; /* Prevents table from becoming too narrow */
+        min-width: 600px;
     }
 
     .mainContent main .tabContainer .table th,td {
@@ -146,4 +176,573 @@
     .mainContent main .search .search-btn {
         padding: 10px;
     }
+
+    .mainContent main .tabContainer::after {
+        content: '← Scroll →';
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        opacity: 0.9;
+        pointer-events: none;
+        animation: fadeInOut 3s forwards;
+    }
+
+    /* Hide specified columns on mobile */
+    .mobile-hide {
+        display: none !important; /* Force hide on mobile */
+    }
+
+    /* Adjust remaining columns */
+    .mainContent main .tabContainer .table td:not(.mobile-hide),
+    .mainContent main .tabContainer .table th:not(.mobile-hide) {
+        width: auto;
+    }
+}
+
+/* Base styles for mobile-hide class */
+.mobile-hide {
+    display: table-cell; /* Default display for table cells */
+}
+
+/* Animations */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 0.9; }
+    80% { opacity: 0.9; }
+    100% { opacity: 0; }
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--table-border);
+}
+
+.profile-thumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--table-border);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: var(--transition-default);
+}
+
+.profile-thumbnail:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-default);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-btn:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.suspend-btn, .unsuspend-btn {
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.suspend-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.unsuspend-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.suspend-btn:hover, .unsuspend-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.table-loading {
+    position: relative;
+    opacity: 0.7;
+}
+
+.table-loading::after {
+    content: "Loading...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.9);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    min-width: 300px;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#confirm-delete-btn {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cancel-delete-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Edit Popup Styles */
+#edit-popup .popup-content {
+    max-width: 400px;
+    padding: 20px;
+}
+
+#edit-user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#edit-user-form label {
+    font-weight: bold;
+}
+
+#edit-user-form select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+#edit-user-form button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#edit-user-form button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Book styles */
+.cover-thumbnail {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.book-cover {
+    width: 80px;
+    padding: 5px;
+    text-align: center;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsive design for book table */
+@media screen and (max-width: 768px) {
+    .table th:nth-child(5),
+    .table th:nth-child(6),
+    .table th:nth-child(7),
+    .table th:nth-child(9),
+    .table td:nth-child(5),
+    .table td:nth-child(6),
+    .table td:nth-child(7),
+    .table td:nth-child(9) {
+        display: none;
+    }
+
+    .cover-thumbnail {
+        width: 40px;
+        height: 60px;
+    }
+
+    /* Show only essential columns on mobile */
+    .table th.mobile-hide,
+    .table td.mobile-hide {
+        display: none;
+    }
+
+    /* Keep ID, Email, Role, and Action columns visible */
+    .table th:nth-child(1),
+    .table td:nth-child(1),
+    .table th:nth-child(3),
+    .table td:nth-child(3),
+    .table th:nth-child(4),
+    .table td:nth-child(4),
+    .table th:nth-child(7),
+    .table td:nth-child(7) {
+        display: table-cell;
+    }
+}
+
+/* Table Responsiveness */
+@media screen and (max-width: 1200px) {
+    .mainContent main .tabContainer .table {
+        font-size: 16px;
+    }
+
+    .mainContent main .tabContainer .table th,
+    .mainContent main .tabContainer .table td {
+        padding: 15px 10px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .mobile-hide {
+        display: none !important;
+    }
+
+    .mainContent main .tabContainer .table {
+        font-size: 14px;
+    }
+
+    .cover-thumbnail {
+        width: 50px;
+        height: 70px;
+    }
+
+    .mainContent main .tabContainer .table th,
+    .mainContent main .tabContainer .table td {
+        padding: 12px 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mainContent main .tabContainer {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 20px;
+    }
+
+    .mainContent main .tabContainer .table {
+        min-width: 500px;
+        font-size: 13px;
+    }
+
+    .mainContent main .tabContainer .table th,
+    .mainContent main .tabContainer .table td {
+        padding: 10px 6px;
+    }
+
+    .cover-thumbnail {
+        width: 40px;
+        height: 60px;
+    }
+
+    /* Show only essential columns on mobile */
+    .table th:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(10)),
+    .table td:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(10)) {
+        display: none;
+    }
+
+    /* Adjust remaining columns */
+    .table th:nth-child(1), .table td:nth-child(1) { width: 15%; } /* ID */
+    .table th:nth-child(3), .table td:nth-child(3) { width: 65%; } /* Title */
+    .table th:nth-child(10), .table td:nth-child(10) { width: 20%; } /* Actions */
+}
+
+@media screen and (max-width: 480px) {
+    .mainContent main .tabContainer .table {
+        min-width: 300px;
+        font-size: 12px;
+    }
+
+    .mainContent main .tabContainer .table th,
+    .mainContent main .tabContainer .table td {
+        padding: 8px 4px;
+    }
+
+    /* Add scroll indicator */
+    .mainContent main .tabContainer::after {
+        content: '← Scroll →';
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        opacity: 0.9;
+        pointer-events: none;
+        animation: fadeInOut 2s infinite;
+    }
+
+    /* Adjust button sizes */
+    .edit-btn, .delete-btn, .suspend-btn, .unsuspend-btn {
+        padding: 6px 8px;
+        margin: 0 2px;
+    }
+
+    .edit-btn i, .delete-btn i, .suspend-btn i, .unsuspend-btn i {
+        font-size: 14px;
+    }
+}
+
+/* Add smooth scrolling for table container */
+.mainContent main .tabContainer {
+    scroll-behavior: smooth;
+}
+
+/* Optimize table borders for better visibility */
+.mainContent main .tabContainer .table th,
+.mainContent main .tabContainer .table td {
+    border: 1px solid var(--table-border);
+}
+
+/* Add hover effect for better touch feedback */
+@media (hover: none) {
+    .mainContent main .tabContainer .table tr:active td {
+        background-color: rgba(52, 152, 219, 0.1);
+    }
+}
+
+/* Add Book Button Styles */
+.addBookBtn {
+    margin: 20px 0;
+    text-align: right;
+    padding: 0 20px;
+}
+
+.addBookBtn button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.addBookBtn button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#book-form label {
+    font-weight: bold;
+}
+
+#book-form input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#book-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Form Styles */
+#book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#book-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+#book-form input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#book-form input[type="file"] {
+    padding: 8px 0;
+}
+
+#book-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#book-form button[type="submit"]:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    #book-form input {
+        font-size: 14px;
+    }
+
+    .addBookBtn {
+        text-align: center;
+    }
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .mobile-hide {
+        display: none !important;
+    }
+
+    /* Keep specific columns visible */
+    .table th:nth-child(1),  /* ID */
+    .table td:nth-child(1),
+    .table th:nth-child(3),  /* Email */
+    .table td:nth-child(3),
+    .table th:nth-child(4),  /* Role */
+    .table td:nth-child(4),
+    .table th:last-child,    /* Action column */
+    .table td:last-child {
+        display: table-cell !important;
+    }
+
+    /* Adjust column widths for mobile */
+    .table th:nth-child(1),
+    .table td:nth-child(1) { width: 15%; }
+    .table th:nth-child(3),
+    .table td:nth-child(3) { width: 35%; }
+    .table th:nth-child(4),
+    .table td:nth-child(4) { width: 20%; }
+    .table th:last-child,
+    .table td:last-child { width: 30%; }
 }

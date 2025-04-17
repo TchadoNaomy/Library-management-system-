@@ -1,3 +1,18 @@
+<?php
+include_once '../../Backend/session_checker.php';
+checkSession();
+include_once '../../Backend/Admin/dashboardhandler.php';
+
+// Get user data from session
+$User = $_SESSION['user_name'] ?? '';
+$Role = $_SESSION['user_role'] ?? '';
+
+// Debugging code - remove in production
+// var_dump($_SESSION);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +22,19 @@
     <link rel="stylesheet" href="../../Assets/Styles/Report.css">
     <link rel="stylesheet" href="../../Assets/Styles/Theme.css">
     <link rel="stylesheet" href="../../Assets/fontawesome/css/all.css">
-    <title>Dashboard</title>
+    <title>APP statistics</title>
 </head>
 <body>
     <div class="sideBar">
         <div class="profilePic">
-            <img src="../../Assets/Images/logo.jfif" alt="Logo">
+        <?php if (isset($_SESSION['profile_image'])): ?>
+                <img src="data:image/jpeg;base64,<?php echo $_SESSION['profile_image']; ?>" alt="Profile">
+            <?php else: ?>
+                <img src="../../Assets/Images/logo.jfif" alt="Default Profile">
+            <?php endif; ?>
             <p class="msg"> Welcome </p>
-            <p class="Uname"> Username </p>
-            <p class="role"> Admin </p>
+            <p class="Uname"> <?php echo $User?> </p>
+            <p class="role"> <?php echo $Role?> </p>
         </div>
         <nav>
             <ul>
@@ -25,7 +44,7 @@
                 <li><a href="../Admin/manageStock.php"><i class="fas fa-boxes-stacked" class="icon"></i>  Manage Stock </a></li>
                 <li class="active"><a href="../Admin/Reports.php"><i class="fas fa-chart-bar" class="icon"></i>  Reports </a></li>
                 <li><a href="../Admin/Settings.php"><i class="fas fa-gear" class="icon"></i>  Settings </a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt" ></i>  LogOut </a></li>
+                <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i>  LogOut </a></li>
               
             </ul>
         </nav>
@@ -55,17 +74,17 @@
                                         <div class="stat-card">
                                             <i class="fas fa-users fa-2x"></i>
                                             <h3>Total Users</h3>
-                                            <p class="count">80</p>
+                                            <p class="count"><?php echo $userCount?></p>
                                         </div>
                                         <div class="stat-card">
                                             <i class="fas fa-book fa-2x"></i>
                                             <h3>Total Books</h3>
-                                            <p class="count">400</p>
+                                            <p class="count"><?php echo $bookCount?></p>
                                         </div>
                                         <div class="stat-card">
                                             <i class="fas fa-book-open fa-2x"></i>
                                             <h3>Books Borrowed</h3>
-                                            <p class="count">200</p>
+                                            <p class="count"><?php echo $borrowCount?></p>
                                         </div>
                                     </div>
                                             <div class="date-range">
@@ -94,6 +113,10 @@
 <script src="../../Assets/Scripts/displayMenu.js"></script>
 <script src="../../Assets/Scripts/updateTitle.js"></script>
 <script src="../../Assets/Scripts/themeManager.js"></script>
+
+<!-- script to prevent backarrow functionality if user is logged in -->
+<!-- <script src="../../Assets//Scripts/stateMaintaine.js"></script> -->
+
 <!-- scripts for handling charts -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../../Assets/Scripts/libraryChart.js"></script>   

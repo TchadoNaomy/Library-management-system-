@@ -1,3 +1,19 @@
+<?php
+include_once '../../Backend/session_checker.php';
+checkSession();
+include_once '../../Backend/Admin/dashboardhandler.php';
+
+// Get user data from session
+$User = $_SESSION['user_name'] ?? '';
+$Role = $_SESSION['user_role'] ?? '';
+
+// Debugging code - remove in production
+// var_dump($_SESSION);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +27,14 @@
 <body>
     <div class="sideBar">
         <div class="profilePic">
-            <img src="../../Assets/Images/logo.jfif" alt="Logo">
-            <p class="msg"> Welcome </p>
-            <p class="Uname"> Username </p>
-            <p class="role"> Admin </p>
+            <?php if (isset($_SESSION['profile_image'])): ?>
+                <img src="data:image/jpeg;base64,<?php echo $_SESSION['profile_image']; ?>" alt="Profile">
+            <?php else: ?>
+                <img src="../../Assets/Images/logo.jfif" alt="Default Profile">
+            <?php endif; ?>
+            <p class="msg">Welcome</p>
+            <p class="Uname"><?php echo $User; ?></p>
+            <p class="role"><?php echo $Role; ?></p>
         </div>
         <nav>
             <ul>
@@ -24,8 +44,7 @@
                 <li><a href="../Admin/manageStock.php"><i class="fas fa-boxes-stacked" class="icon"></i>  Manage Stock </a></li>
                 <li><a href="../Admin/Reports.php"><i class="fas fa-chart-bar" class="icon"></i>  Reports </a></li>
                 <li><a href="../Admin/Settings.php"><i class="fas fa-gear" class="icon"></i>  Settings </a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt" ></i>  LogOut </a></li>
-              
+                <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i>  LogOut </a></li>
             </ul>
         </nav>
         <footer >
@@ -54,39 +73,33 @@
                                             <div class="card">
                                                 <i class="fas fa-users fa-3x"></i>
                                                 <h3>Total Users</h3>
-                                                <p class="count"><?php echo "80" ?></p>
+                                                <p class="count"><?php echo $userCount?></p>
                                             </div>
                                             <div class="card">
                                                 <i class="fas fa-book fa-3x"></i>
                                                 <h3>Total Books</h3>
-                                                <p class="count"><?php echo "400" ?></p>
+                                                <p class="count"><?php echo $bookCount?></p>
                                             </div>
                                             <div class="card">
                                                 <i class="fas fa-book-open fa-3x"></i>
                                                 <h3>Books Borrowed</h3>
-                                                <p class="count"><?php echo "200" ?></p>
+                                                <p class="count"><?php echo $borrowCount?></p>
                                             </div>
                                             <div class="card">
                                                 <i class="fas fa-clock fa-3x"></i>
                                                 <h3>Pending Returns</h3>
-                                                <p class="count"><?php echo "0" ?></p>
+                                                <p class="count"><?php echo $pendingCount ?></p>
                                             </div>
                                         </div>
                                     </main>
                         </div>
+
+ <!-- script to prevent backarrow functionality if user is logged in -->
+ <!-- <script src="../../Assets//Scripts/stateMaintaine.js"></script> -->
 </body>
 <!-- other scripts -->
 <script src="../../Assets/Scripts/displayMenu.js"></script>
 <script src="../../Assets/Scripts/updateTitle.js"></script>
-<script src="../../Assets/Scripts/libraryChart.js"></script>
 <script src="../../Assets/Scripts/themeManager.js"></script>
-<!-- Script for storing cards data to local storage on page load -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const countElements = document.querySelectorAll('.count');
-    const libraryData = Array.from(countElements).map(element => parseInt(element.textContent));
-    localStorage.setItem('libraryStats', JSON.stringify(libraryData));
-});
-</script>
 
 </html>

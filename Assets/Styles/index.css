@@ -78,6 +78,24 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
+.buttonContainer{
+    height: 10vh;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: black; */
+}
+
+.buttonContainer a .signupbtn{
+    padding: 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #003670;
+    color: #f4f4f4;
+}
+
 main {
     padding: 1rem;
     height: calc(100vh - 120px);
