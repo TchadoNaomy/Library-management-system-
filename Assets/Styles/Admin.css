@@ -27,10 +27,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    display: flex;
-    flex-direction: column;
     height: 100vh;
-    overflow-y: auto; /* Add scrolling if content is too long */
     width: var(--sidebar-width);
     background-color: var(--bg-white);
     transform: translateX(-100%);
@@ -92,37 +89,24 @@
     border-color: var(--primary-color);
 }
 
-/* Active and Show Classes - Move these up before media queries */
-.sideBar nav ul .active a {
+.sideBar nav ul .active {
     background-color: var(--primary-color);
-    border-color: var(--hover-color);
     color: var(--text-light);
+    border-color: var(--primary-color);
 }
 
-.show {
-    transform: translateX(0);
-    visibility: visible;
-    opacity: 1;
+.show{
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: var(--sidebar-width);
 }
-x
+
 /* Footer Styles */
 .sideBar footer {
     margin-top: auto;
     width: 100%;
     text-align: center;
-    padding: 1rem;
-    position: relative;
-    bottom: 0;
-    background-color: var(--bg-white);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.sideBar footer p {
-    margin: 0;
-    padding: 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    word-wrap: break-word; /* Ensures text wraps properly */
 }
 
 /* Main Content Area */
@@ -228,6 +212,8 @@ x
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
+
+
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
     :root {
@@ -316,14 +302,6 @@ x
     .mainContent nav .title {
         font-size: 1.2em;
     }
-
-    .sideBar footer {
-        padding: 0.5rem;
-    }
-    
-    .sideBar footer p {
-        font-size: 0.8rem;
-    }
 }
 
 @media screen and (max-width: 375px) {
@@ -362,7 +340,6 @@ x
         font-size: 0.8em;
     }
 }
-
 /* Media query for responsive behavior */
 @media screen and (min-width: 1024px) {
     .sideBar {

@@ -109,4 +109,48 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Delete book functionality
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const bookId = this.getAttribute('data-id');
+            
+            // Confirm deletion
+            if (!confirm('Are you sure you want to delete this book?')) {
+                return;
+            }
+
+            try {
+                const formData = new FormData();
+                formData.append('book_id', bookId);
+
+                const response = await fetch('../../Backend/Admin/deleteBook.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(data.message);
+                    // Remove the row from the table
+                    this.closest('tr').remove();
+                    
+                    // If no books left, show "No books found" message
+                    const tbody = document.querySelector('.table tbody');
+                    if (tbody.children.length === 0) {
+                        const noDataRow = document.createElement('tr');
+                        noDataRow.innerHTML = '<td colspan="10" class="no-data">No books found</td>';
+                        tbody.appendChild(noDataRow);
+                    }
+                } else {
+                    alert(data.message || 'Failed to delete book');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while deleting the book');
+            }
+        });
+    });
 });

@@ -2,78 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Library Catalogue</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .search-bar {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .search-bar input {
-      width: 300px;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    .catalogue {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .book-card {
-      background: white;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .book-card img {
-      max-width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-
-    .book-title {
-      font-weight: bold;
-      margin: 10px 0 5px;
-    }
-
-    .book-author {
-      font-style: italic;
-      color: #666;
-      margin-bottom: 10px;
-    }
-
-    .book-desc {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    .availability {
-      background: #ffd700;
-      color: black;
-      font-weight: bold;
-      padding: 10px;
-      border-radius: 3px;
-    }
-    .container {
-      color: aqua;
-      font-weight: bold;
-      margin-left:250px;
-    }
-  </style>
+  <title>Catalogue</title>
+  <link rel="stylesheet" href="Assets/Styles/Catalog.css">
+  <link rel="stylesheet" href="Assets/Styles/index.css">
 </head>
+<header>
+        <h1>Welcome to My Website</h1>
+        <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="Catalog.php">Catalog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="buttonContainer">
+           <a href="Register.php"><button class="signupbtn" >SignUp</button></a> 
+        </div>
+    </header>
 <body>
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search books...">
