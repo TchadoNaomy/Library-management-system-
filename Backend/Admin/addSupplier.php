@@ -1,52 +1,48 @@
 <?php
 require_once '../connection.php';
-header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
-    exit;
-}
+header('Content-Type: application/json');
 
 try {
     // Validate required fields
-    $required = ['name', 'email', 'contact', 'address'];
-    foreach ($required as $field) {
+    $required_fields = ['name', 'email', 'phone_number', 'address'];
+    foreach ($required_fields as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
-            throw new Exception("Missing required field: $field");
+            throw new Exception("Missing required field: " . str_replace('_', ' ', $field));
         }
     }
 
     // Sanitize inputs
-    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+    $name = trim($_POST['name']);
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-    $contact = filter_var(trim($_POST['contact']), FILTER_SANITIZE_STRING);
-    $address = filter_var(trim($_POST['address']), FILTER_SANITIZE_STRING);
+    $phone = trim($_POST['phone_number']);
+    $address = trim($_POST['address']);
 
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         throw new Exception('Invalid email format');
     }
 
-    // Check if email already exists
+    // Validate phone number (minimum 10 digits)
+    if (!preg_match('/^[+]?[0-9\s-]{10,}$/', $phone)) {
+        throw new Exception('Please enter a valid phone number (minimum 10 digits)');
+    }
+
+    // Check for existing email
     $stmt = $conn->prepare("SELECT supplier_id FROM supplier WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
+    if ($stmt->get_result()->num_rows > 0) {
         throw new Exception('A supplier with this email already exists');
     }
+    $stmt->close();
 
-    // Prepare and execute insert statement
+    // Insert new supplier
     $stmt = $conn->prepare("INSERT INTO supplier (name, email, phone_number, address) VALUES (?, ?, ?, ?)");
-    if (!$stmt) {
-        throw new Exception("Prepare failed: " . $conn->error);
-    }
-
-    $stmt->bind_param("ssss", $name, $email, $contact, $address);
-
+    $stmt->bind_param("ssss", $name, $email, $phone, $address);
+    
     if (!$stmt->execute()) {
-        throw new Exception("Execute failed: " . $stmt->error);
+        throw new Exception("Failed to add supplier: " . $stmt->error);
     }
 
     echo json_encode([
@@ -56,7 +52,7 @@ try {
     ]);
 
 } catch (Exception $e) {
-    error_log("Error adding supplier: " . $e->getMessage());
+    http_response_code(400);
     echo json_encode([
         'success' => false,
         'message' => $e->getMessage()

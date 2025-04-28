@@ -82,7 +82,7 @@
 
 .edit-btn,
 .delete-btn {
-    background: var(--bg-white);
+    background-color: var(--bg-light);;
     border: none;
     padding: 0.5rem;
     border-radius: 4px;
@@ -96,6 +96,34 @@
 .delete-btn:hover {
     background-color:rgba(232, 20, 20, 0.936);
     color: white;
+}
+
+.editBtn,.deleteBtn,.viewBtn {
+    background-color: var(--text-dark);
+    color: var(--bg-light);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewBtn:hover{
+    
+    background-color: #05b6f1;
+}
+.editBtn:hover {
+    background-color: #4CAF50;
+}
+.deleteBtn:hover {
+    background-color: #f44336;
 }
 /* Enhanced Modal Styles */
 .modal {
@@ -220,6 +248,54 @@
 
 .modal .submit-btn:active {
     transform: translateY(0);
+}
+
+
+/* Order Items Styling */
+.item-row {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.item-row .form-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.item-row input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.remove-item-btn {
+    padding: 8px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-item-btn:hover {
+    background-color: #d32f2f;
+}
+
+#add-item-btn {
+    margin: 10px 0;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#add-item-btn:hover {
+    background-color: #45a049;
 }
 
 /* Responsive Modal Styles */

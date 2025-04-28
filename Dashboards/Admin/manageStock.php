@@ -186,6 +186,7 @@ $Role = $_SESSION['user_role'] ?? '';
 <script src="../../Assets/Scripts/updateTitle.js"></script>
 <script src="../../Assets/Scripts/themeManager.js"></script>
 <script src="../../Assets/Scripts/stockManager.js"></script>
+<script src="../../Assets/Scripts/orderManager.js"></script>
 <!-- script to prevent backarrow functionality if user is logged in -->
 <!-- <script src="../../Assets//Scripts/stateMaintaine.js"></script> -->
 </html>

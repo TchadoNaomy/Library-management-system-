@@ -46,7 +46,7 @@ function checkSession() {
         exit();
     }
 
-    if ($is_user_page && $_SESSION['user_role'] !== 'user') {
+    if ($is_user_page && $_SESSION['user_role'] !== 'client') {
         header("Location: ../Admin/Admin.php");
         exit();
     }

@@ -388,4 +388,71 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = false;
         }
     });
+
+    const phoneInput = document.getElementById('supplier-contact');
+
+    // Phone number validation pattern (allows +, spaces, and numbers)
+    phoneInput.pattern = "^[+]?[0-9\\s-]{10,}$";
+    phoneInput.title = "Please enter a valid phone number (minimum 10 digits)";
+
+    addSupplierBtn.addEventListener('click', function() {
+        supplierForm.reset();
+        document.getElementById('supplier-id').value = '';
+        document.getElementById('supplier-modal-title').textContent = 'Add New Supplier';
+        supplierModal.classList.add('show');
+    });
+
+    // Close modal handler
+    const closeBtn = supplierModal.querySelector('.close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => supplierModal.classList.remove('show'));
+    }
+
+    // Form submit handler
+    supplierForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const submitBtn = this.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+
+        try {
+            // Validate phone number
+            const phoneNumber = phoneInput.value.trim();
+            if (!phoneNumber.match(/^[+]?[0-9\s-]{10,}$/)) {
+                throw new Error('Please enter a valid phone number (minimum 10 digits)');
+            }
+
+            const formData = new FormData(this);
+            
+            // Ensure all required fields are filled
+            const requiredFields = ['name', 'email', 'phone_number', 'address'];
+            requiredFields.forEach(field => {
+                if (!formData.get(field)?.trim()) {
+                    throw new Error(`${field.replace('_', ' ')} is required`);
+                }
+            });
+
+            const response = await fetch('../../Backend/Admin/addSupplier.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert(data.message || 'Supplier added successfully');
+                location.reload();
+            } else {
+                throw new Error(data.message || 'Failed to add supplier');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert(error.message);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
 });

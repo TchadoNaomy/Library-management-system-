@@ -1,23 +1,44 @@
+<?php
+require_once './Backend/login_handler.php';
+// checkSession();
+include_once './Backend/User/dashboardhandler.php';
+include_once './Backend/Admin/fetchBooks.php';
+
+$info = getBooks(); // Fetch books from the database  
+// Get user data from session
+$User = $_SESSION['user_name'] ?? '';
+$Role = $_SESSION['user_role'] ?? '';
+
+// Debugging code - remove in production
+// var_dump($_SESSION);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Catalogue</title>
+  <link rel="stylesheet" href="Assets/fontawesome/css/all.css">
   <link rel="stylesheet" href="Assets/Styles/Catalog.css">
   <link rel="stylesheet" href="Assets/Styles/index.css">
 </head>
 <header>
-        <h1>Welcome to My Website</h1>
+            <h1><i class="fas fa-book-open"></i> Genesia Libraria </h1>
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="Catalog.php">Catalog</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="aboutus.php">About</a></li>
+                <li><a class="active" href="Catalog.php">Catalog</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
         <div class="buttonContainer">
+        <?php if (isset($_SESSION['user_role']) == 'client'): ?>
+            <a href="./Dashboards/User/User.php"><button class="dashBoard">Dashboard</button></a>
+            <?php else: ?>
            <a href="Register.php"><button class="signupbtn" >SignUp</button></a> 
+            <?php endif; ?>
         </div>
     </header>
 <body>
@@ -26,71 +47,25 @@
   </div>
 
   <div class="catalogue" id="bookCatalogue">
+    <?php foreach ($info as $book): ?>
     <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">The Great Gatsby</div>
-      <div class="book-author">F. Scott Fitzgerald</div>
-      <div class="book-desc">A novel set in the Roaring Twenties.</div>
-      <div class="availability">Available</div>
+    <?php if (!empty($book['book_cover'])): ?>
+      <img src="data:image/jpeg;base64,<?php echo $book['book_cover']; ?>" 
+      alt="Book Cover" class="cover-thumbnail">
+      <?php else: ?>
+        <img src="Assets/Images/default-book.jpg" 
+            alt="Default Cover" class="cover-thumbnail">
+        <?php endif; ?>
+      <div class="book-title"><?php echo htmlspecialchars($book['title']) ?></div>
+      <div class="book-author"><?php echo htmlspecialchars($book['author']) ?></div>
+      <div class="book-genre"><?php echo htmlspecialchars($book['genre']) ?></div>
+      <div class="book-desc"><?php echo htmlspecialchars($book['description']) ?></div>
+      <div class="availability">
+       <abbr title="Add to favourite"><i class="fas fa-star" id="fav"></i></abbr> 
+       <abbr title="Download to read later"><i class="fas fa-download" id="downld"></i></abbr>
+        <button>Read Now</button></div>
     </div>
-
-    <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">To Kill a Mockingbird</div>
-      <div class="book-author">Harper Lee</div>
-      <div class="book-desc">A powerful story of racial injustice.</div>
-      <div class="availability">Checked Out</div>
-    </div>
-
-    <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">1984</div>
-      <div class="book-author">George Orwell</div>
-      <div class="book-desc">Dystopian novel about surveillance and control.</div>
-      <div class="availability">Available</div>
-    </div>
-
-    <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">god plan</div>
-      <div class="book-author">gabana</div>
-      <div class="book-desc"> novel about life.</div>
-      <div class="availability">Available</div>
-    </div>
-
-      <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">it is not what you have, it what you become</div>
-      <div class="book-author">Mr Hassane</div>
-      <div class="book-desc"> powerful story of  injustice in life.</div>
-      <div class="availability">Checked Out</div>
-    </div>
-
-    <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">tokoss</div>
-      <div class="book-author">Fally</div>
-      <div class="book-desc">the goodness of music.</div>
-      <div class="availability">Available</div>
-    </div>
-
-    <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">it is future</div>
-      <div class="book-author">Me</div>
-      <div class="book-desc"> what a word.</div>
-      <div class="availability">Checked Out</div>
-    </div>
-
-    <div class="book-card">
-      <img src="https://via.placeholder.com/200x180" alt="Book Image">
-      <div class="book-title">fuck life</div>
-      <div class="book-author">us</div>
-      <div class="book-desc"> sensational.</div>
-      <div class="availability">Checked Out</div>
-    </div>
-    <!-- Add more book cards here -->
-
+    <?php endforeach; ?>
   </div>
 
   <script>

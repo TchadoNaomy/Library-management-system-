@@ -79,7 +79,7 @@ $Role = $_SESSION['user_role'] ?? '';
                                         <div class="stat-card">
                                             <i class="fas fa-book fa-2x"></i>
                                             <h3>Total Books</h3>
-                                            <p class="count"><?php echo $bookCount?></p>
+                                            <p class="count"><?php echo $bookCount ?> </p>
                                         </div>
                                         <div class="stat-card">
                                             <i class="fas fa-book-open fa-2x"></i>

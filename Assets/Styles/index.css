@@ -11,7 +11,7 @@ html, body {
 }
 
 header {
-    background-color: #007bff;
+    background-color: #2C3E50;
     color: #fff;
     padding: 0 1rem;
     width: 100%;
@@ -72,10 +72,17 @@ nav ul li a::after {
 
 nav ul li a:hover {
     color: #e0e0e0;
+    border: none;
 }
 
 nav ul li a:hover::after {
     width: 100%;
+}
+
+.active{
+    border: none;
+    border-bottom: 3px solid white ;
+    /* background-color: #003670; */
 }
 
 .buttonContainer{
@@ -87,13 +94,22 @@ nav ul li a:hover::after {
     /* background-color: black; */
 }
 
-.buttonContainer a .signupbtn{
-    padding: 20px;
+.buttonContainer a .signupbtn,.dashBoard{
+    padding: 15px 25px;
     border-radius: 25px;
     border: none;
     cursor: pointer;
     background-color: #003670;
     color: #f4f4f4;
+    transition: background-color 0.6s ease-in;
+}
+
+.buttonContainer a .signupbtn:hover{
+    background-color: #3498DB;
+}
+
+.buttonContainer a .dashBoard:hover{
+    background-color: #3498DB;
 }
 
 main {
@@ -111,7 +127,7 @@ section {
 }
 
 footer {
-    background-color: #007bff;
+    background-color: #34495E;
     color: #fff;
     width: 100%;
     min-height: 60px;
