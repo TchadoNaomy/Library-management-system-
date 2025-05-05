@@ -26,9 +26,7 @@ body {
     gap: 20px;
     height: 80vh;
     max-height: fit-content;
-    overflow: hidden;
-    overflow-y: auto;
-    scroll-behavior: smooth;
+    
   }
 
   .book-card {
@@ -86,6 +84,7 @@ body {
     padding: 10px;
     cursor: pointer;
     border-radius: 15px;
+    margin-left: 5px;
   }
 
   .availability button{
@@ -93,6 +92,7 @@ body {
     background-color: #f08080; 
     border: 1px solid #f08080;
     border-radius: 15px;
+    margin-left: 5px;
     cursor: pointer;
   }
 
@@ -110,14 +110,17 @@ body {
   }
   
   .availability #fav:hover{
-    background-color: #e91e63;
-    color: rgb(250, 249, 249);
+    color: gold;
   }
 
   .availability #downld{
     background-color: #c9c4b5;
   }
-  
+
+  .favorited{
+    color: gold;
+  }
+
 #fav:disabled {
     background-color: #ccc;
     cursor: not-allowed;

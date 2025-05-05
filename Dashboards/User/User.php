@@ -30,17 +30,17 @@ $Role = $_SESSION['user_role'] ?? '';
             <?php else: ?>
                 <img src="../../Assets/Images/logo.jfif" alt="Default Profile">
             <?php endif; ?>
-            <p class="msg">Welcome</p>
+            <p class="msg" data-translate="welcome"></p>
             <p class="Uname"><?php echo $User; ?></p>
             <p class="role"><?php echo $Role; ?></p>
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="../User/User.php"><i class="fas fa-qrcode" ></i>  Dashboard </a></li>
-                <li><a href="../../Catalog.php"><i class="fas fa-file-lines" class="icon"></i> Catalog </a></li>
-                <li><a href="Favourite.php"><i class="fas fa-star" class="icon"></i> favourite Books </a></li>
-                <li><a href="./Settings.php"><i class="fas fa-gear" class="icon"></i>  Settings </a></li>
-                <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i>  LogOut </a></li>
+                <li class="active"><a href="../User/User.php"><i class="fas fa-qrcode"></i> <span data-translate="dashboard">Dashboard</span></a></li>
+                <li><a href="../../Catalog.php"><i class="fas fa-file-lines" class="icon"></i> <span data-translate="catalog">Catalog</span></a></li>
+                <li><a href="Favourite.php"><i class="fas fa-star" class="icon"></i> <span data-translate="favouriteBooks">FavouriteBook</span></a></li>
+                <li><a href="./Settings.php"><i class="fas fa-gear" class="icon"></i> <span data-translate="settings">Settings</span></a></li>
+                <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i> <span data-translate="logout">LogOut</span></a></li>
             </ul>
         </nav>
         <footer >
@@ -76,5 +76,5 @@ $Role = $_SESSION['user_role'] ?? '';
 <script src="../../Assets/Scripts/displayMenu.js"></script>
 <script src="../../Assets/Scripts/updateTitle.js"></script>
 <script src="../../Assets/Scripts/themeManager.js"></script>
-
+<script src="../../Assets/Scripts/languageManager.js"></script>
 </html>

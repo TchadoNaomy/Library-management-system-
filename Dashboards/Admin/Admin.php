@@ -32,19 +32,19 @@ $Role = $_SESSION['user_role'] ?? '';
             <?php else: ?>
                 <img src="../../Assets/Images/logo.jfif" alt="Default Profile">
             <?php endif; ?>
-            <p class="msg">Welcome</p>
-            <p class="Uname"><?php echo $User; ?></p>
-            <p class="role"><?php echo $Role; ?></p>
+            <p class="msg" data-translate="welcome"></p>
+            <p class="Uname"><?php echo $User?></p>
+            <p class="role"><?php echo $Role?></p>
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="../Admin/Admin.php"><i class="fas fa-qrcode" ></i>  Dashboard </a></li>
-                <li><a href="../Admin/Acount.php"><i class="fas fa-users-gear" class="icon"></i>  Manage Acounts </a></li>
-                <li><a href="../Admin/Book.php"><i class="fas fa-book" class="icon"></i>  Manage Books </a></li>
-                <li><a href="../Admin/manageStock.php"><i class="fas fa-boxes-stacked" class="icon"></i>  Manage Stock </a></li>
-                <li><a href="../Admin/Reports.php"><i class="fas fa-chart-bar" class="icon"></i>  Reports </a></li>
-                <li><a href="../Admin/Settings.php"><i class="fas fa-gear" class="icon"></i>  Settings </a></li>
-                <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i>  LogOut </a></li>
+                <li class="active"><a href="../Admin/Admin.php"><i class="fas fa-qrcode"></i> <span data-translate="dashboard">Dashboard</span></a></li>
+                <li><a href="../Admin/Acount.php"><i class="fas fa-users-gear" class="icon"></i> <span data-translate="manageAccounts">manageAccounts</span></a></li>
+                <li><a href="../Admin/Book.php"><i class="fas fa-book" class="icon"></i> <span data-translate="manageBooks">manageBooks</span></a></li>
+                <li><a href="../Admin/manageStock.php"><i class="fas fa-boxes-stacked" class="icon"></i> <span data-translate="manageStock">manageStock</span></a></li>
+                <li><a href="../Admin/Reports.php"><i class="fas fa-chart-bar" class="icon"></i> <span data-translate="reports">Reports</span></a></li>
+                <li><a href="../Admin/Settings.php"><i class="fas fa-gear" class="icon"></i> <span data-translate="settings">Settings</span></a></li>
+                <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i> <span data-translate="logout">LogOut</span></a></li>
             </ul>
         </nav>
         <footer >
@@ -101,5 +101,6 @@ $Role = $_SESSION['user_role'] ?? '';
 <script src="../../Assets/Scripts/displayMenu.js"></script>
 <script src="../../Assets/Scripts/updateTitle.js"></script>
 <script src="../../Assets/Scripts/themeManager.js"></script>
-
+<script src="../../Assets/Scripts/languageManager.js"></script>
+</body>
 </html>

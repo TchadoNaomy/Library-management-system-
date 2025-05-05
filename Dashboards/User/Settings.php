@@ -1,15 +1,11 @@
 <?php
 include_once '../../Backend/session_checker.php';
 checkSession();
-include_once '../../Backend/Admin/dashboardhandler.php';
+include_once '../../Backend/User/dashboardhandler.php';
 
 // Get user data from session
 $User = $_SESSION['user_name'] ?? '';
 $Role = $_SESSION['user_role'] ?? '';
-
-// Debugging code - remove in production
-// var_dump($_SESSION);
-
 ?>
 
 
@@ -60,6 +56,12 @@ $Role = $_SESSION['user_role'] ?? '';
                                 <i class=""></i>
                                 
                             </p>
+                            <div class="notificationBox">
+                                <div class="counter">
+                                    <p>0</p>
+                                </div>
+                                <i class="fas fa-bell fa-2x"></i>
+                            </div>
                         </nav>
                                 <main>
                                     <div class="settings-container">
@@ -78,33 +80,29 @@ $Role = $_SESSION['user_role'] ?? '';
                                             </div>
                                         </div>
 
-                                            <!-- Theme Settings Card -->
-                                            <div class="settings-card">
-                                                <div class="card-header">
-                                                    <i class="fas fa-palette fa-2x"></i>
-                                                    <h3>Theme Settings</h3>
-                                                </div>
-                                                <div class="card-content">
-                                                    <div class="theme-options">
-                                                        <label class="theme-option">
-                                                            <input type="radio" name="theme" value="default" checked>
-                                                            <span>Default</span><i class="fas fa-circle-half-stroke"></i>
-                                                        </label>
-                                                        <label class="theme-option">
-                                                            <input type="radio" name="theme" value="light">
-                                                            <span>Light Mode</span><i class="fas fa-sun"></i>
-                                                        </label>
-                                                        <label class="theme-option">
-                                                            <input type="radio" name="theme" value="dark">
-                                                            <span>Dark Mode</span><i class="fas fa-moon"></i>
-                                                        </label>
-                                                        <label class="theme-option">
-                                                            <input type="radio" name="theme" value="booksphere">
-                                                            <span>Book Sphere</span><i class="fas fa-book-open-reader"></i>
-                                                        </label>
-                                                    </div>
+                                        <!-- Theme Settings Card -->
+                                        <div class="settings-card">
+                                            <div class="card-header">
+                                                <i class="fas fa-paint-brush fa-2x"></i>
+                                                <h3>Theme Settings</h3>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="theme-options">
+                                                    <label class="theme-option">
+                                                        <input type="radio" name="theme" value="light" checked>
+                                                        <span>Light Theme</span>
+                                                    </label>
+                                                    <label class="theme-option">
+                                                        <input type="radio" name="theme" value="dark">
+                                                        <span>Dark Theme</span>
+                                                    </label>
+                                                    <label class="theme-option">
+                                                        <input type="radio" name="theme" value="booksphere">
+                                                        <span>BookSphere Theme</span>
+                                                    </label>
                                                 </div>
                                             </div>
+                                        </div>
 
                                                     <!-- Notification Settings Card -->
                                                     <div class="settings-card">
@@ -132,12 +130,13 @@ $Role = $_SESSION['user_role'] ?? '';
                                                             <h3>Profile Picture Settings</h3>
                                                         </div>
                                                         <div class="card-content">
-                                                            <div class="notification-options">
-                                                                <label class="switch">
-                                                                    <span class="slider">Change profile picture</span>
-                                                                    <button class="updatepicbtn">update Profile Picture</button>
-                                                                </label>
-                                                            </div>
+                                                            <form id="profile-pic-form" enctype="multipart/form-data">
+                                                                <div class="file-input-container">
+                                                                    <input type="file" id="profile_image" name="profile_image" accept="image/*" required>
+                                                                    <small>Supported formats: JPG, JPEG, PNG. Max size: 5MB</small>
+                                                                </div>
+                                                                <button type="submit" class="updatepicbtn">Update Profile Picture</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                     </div>
@@ -148,6 +147,7 @@ $Role = $_SESSION['user_role'] ?? '';
 <script src="../../Assets/Scripts/displayMenu.js"></script>
 <script src="../../Assets/Scripts/updateTitle.js"></script>
 <script src="../../Assets/Scripts/themeManager.js"></script>
+<script src="../../Assets/Scripts/profilePictureManager.js"></script>
 
 <!-- script to prevent backarrow functionality if user is logged in -->
 <!-- <script src="../../Assets//Scripts/stateMaintaine.js"></script> -->

@@ -28,17 +28,17 @@ $Role = $_SESSION['user_role'] ?? '';
                 <h1><i class="fas fa-book-open"></i> Genesia Libraria </h1>
         <nav>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a class="active" href="aboutus.php">About</a></li>
-                <li><a href="Catalog.php">Catalog</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="index.php" data-translate="home">Home</a></li>
+                <li><a class="active" href="aboutus.php" data-translate="about">About</a></li>
+                <li><a href="Catalog.php" data-translate="catalog">Catalog</a></li>
+                <li><a href="contact.php" data-translate="contact">Contact</a></li>
             </ul>
         </nav>
         <div class="buttonContainer">
         <?php if (isset($_SESSION['user_role']) == 'client'): ?>
-            <a href="Register.php" style="display: none;"><button class="signupbtn" >SignUp</button></a> 
+            <a href="Register.php" style="display: none;"><button class="signupbtn" data-translate="signUp">SignUp</button></a> 
             <?php else: ?>
-           <a href="Register.php"><button class="signupbtn" >SignUp</button></a> 
+           <a href="Register.php"><button class="signupbtn" data-translate="signUp">SignUp</button></a> 
             <?php endif; ?>
         </div>
     </header>
@@ -100,5 +100,6 @@ $Role = $_SESSION['user_role'] ?? '';
     </section>
    
    </div>
+   <script src="./Assets/Scripts/languageManager.js"></script>
 </body>
 </html>

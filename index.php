@@ -28,17 +28,17 @@ $Role = $_SESSION['user_role'] ?? '';
                 <h1><i class="fas fa-book-open"></i> Genesia Libraria </h1>
         <nav>
             <ul>
-                <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="aboutus.php">About</a></li>
-                <li><a href="Catalog.php">Catalog</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a class="active" href="index.php" data-translate="home">Home</a></li>
+                <li><a href="aboutus.php" data-translate="about">About</a></li>
+                <li><a href="Catalog.php" data-translate="catalog">Catalog</a></li>
+                <li><a href="contact.php" data-translate="contact">Contact</a></li>
             </ul>
         </nav>
         <div class="buttonContainer">
             <?php if (isset($_SESSION['user_role']) == 'client'): ?>
-            <a href="./Dashboards/User/User.php"><button class="dashBoard">Dashboard</button></a>
+            <a href="./Dashboards/User/User.php"><button class="dashBoard" data-translate="dashboard">Dashboard</button></a>
             <?php else: ?>
-           <a href="Register.php"><button class="signupbtn" >SignUp</button></a> 
+           <a href="Register.php"><button class="signupbtn" data-translate="signUp">SignUp</button></a> 
             <?php endif; ?>
         </div>
     </header>
@@ -50,26 +50,27 @@ $Role = $_SESSION['user_role'] ?? '';
             </section>
 
             <section class="features">
-                <h2>Features</h2>
+                <h2 data-translate="featuresTitle">Features</h2>
                 <div class="feature-item">
                     <i class="fas fa-book"></i>
-                    <h3>Wide Selection of Books</h3>
-                    <p>Explore our extensive collection of books across various genres.</p>
+                    <h3 data-translate="wideSelection">Wide Selection of Books</h3>
+                    <p data-translate="wideSelectionDesc">Explore our extensive collection of books across various genres.</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-user"></i>
-                    <h3>User-Friendly Interface</h3>
-                    <p>Navigate through our platform with ease and find what you need quickly.</p>
+                    <h3 data-translate="userFriendly">User-Friendly Interface</h3>
+                    <p data-translate="userFriendlyDesc">Navigate through our platform with ease and find what you need quickly.</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-headset"></i>
-                    <h3>24/7 Customer Support</h3>
-                    <p>Our support team is here to assist you anytime, anywhere.</p>
+                    <h3 data-translate="support">24/7 Customer Support</h3>
+                    <p data-translate="supportDesc">Our support team is here to assist you anytime, anywhere.</p>
                 </div>
             </section>
         </main>
             <footer style="text-transform: capitalize;">
                 <p>&copy; 2025 library management system group 2 all right reserved</p>
             </footer>
+    <script src="./Assets/Scripts/languageManager.js"></script>
 </body>
 </html>

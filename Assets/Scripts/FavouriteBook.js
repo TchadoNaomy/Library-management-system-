@@ -46,11 +46,15 @@ document.addEventListener('click', async function(e) {
             const data = await response.json();
 
             if (data.success) {
-                // Update icon appearance
-                favIcon.className = 'fas fa-star favorited';
+                // Toggle favorited class
+                if (favIcon.classList.contains('favorited')) {
+                    favIcon.classList.remove('favorited');
+                } else {
+                    favIcon.classList.add('favorited');
+                }
                 alert(data.message);
             } else {
-                throw new Error(data.message || 'Failed to add to favorites');
+                throw new Error(data.message || 'Failed to update favorites');
             }
         } catch (error) {
             console.error('Error:', error);

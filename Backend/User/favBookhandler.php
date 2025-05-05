@@ -11,7 +11,7 @@ $database = 'library_management';
 try {
     // Check if user is logged in
     if (!isset($_SESSION['user_id'])) {
-        throw new Exception('Please login to add favorites');
+        throw new Exception('Please login to manage favorites');
     }
 
     // Validate request method
@@ -38,24 +38,41 @@ try {
     $checkStmt = $conn->prepare("SELECT fav_id FROM favourite WHERE user_id = ? AND book_id = ?");
     $checkStmt->bind_param("ii", $userId, $bookId);
     $checkStmt->execute();
+    $result = $checkStmt->get_result();
     
-    if ($checkStmt->get_result()->num_rows > 0) {
-        throw new Exception('Book is already in favorites');
+    if ($result->num_rows > 0) {
+        // Remove from favorites
+        $deleteStmt = $conn->prepare("DELETE FROM favourite WHERE user_id = ? AND book_id = ?");
+        $deleteStmt->bind_param("ii", $userId, $bookId);
+        
+        if (!$deleteStmt->execute()) {
+            throw new Exception("Failed to remove from favorites");
+        }
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Book removed from favorites'
+        ]);
+        
+        $deleteStmt->close();
+    } else {
+        // Add to favorites
+        $insertStmt = $conn->prepare("INSERT INTO favourite (user_id, book_id) VALUES (?, ?)");
+        $insertStmt->bind_param("ii", $userId, $bookId);
+        
+        if (!$insertStmt->execute()) {
+            throw new Exception("Failed to add to favorites");
+        }
+        
+        echo json_encode([
+            'success' => true,
+            'message' => 'Book added to favorites successfully'
+        ]);
+        
+        $insertStmt->close();
     }
+    
     $checkStmt->close();
-
-    // Add to favorites
-    $stmt = $conn->prepare("INSERT INTO favourite (book_id, user_id ) VALUES (?, ?)");
-    $stmt->bind_param("ii", $bookId, $userId);
-    
-    if (!$stmt->execute()) {
-        throw new Exception("Failed to add to favorites");
-    }
-
-    echo json_encode([
-        'success' => true,
-        'message' => 'Book added to favorites successfully'
-    ]);
 
 } catch (Exception $e) {
     http_response_code(400);
@@ -64,9 +81,6 @@ try {
         'message' => $e->getMessage()
     ]);
 } finally {
-    if (isset($stmt)) {
-        $stmt->close();
-    }
     if (isset($conn)) {
         $conn->close();
     }

@@ -116,6 +116,7 @@
     min-height: 100vh;
     background-color: var(--bg-light);
     transition: var(--transition-default);
+    width: calc(100% - var(--sidebar-width));
 }
 
 /* Navigation Bar */
@@ -197,6 +198,7 @@ any other styling to fit here */
     .mainContent {
         margin-left: 0;
         width: 100%;
+        padding: 0.5rem;
     }
 
     .card-container {
@@ -224,6 +226,7 @@ any other styling to fit here */
 
     .mainContent.shifted {
         margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
     }
 }
 
@@ -270,6 +273,20 @@ any other styling to fit here */
 
     .mainContent nav .title {
         font-size: 1.2em;
+    }
+
+    .mainContent {
+        padding: 0.5rem;
+    }
+
+    .mainContent.shifted {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sideBar {
+        position: fixed;
+        z-index: 1000;
     }
 }
 
@@ -324,9 +341,37 @@ any other styling to fit here */
     .mainContent {
         margin-left: 0;
         width: 100%;
+        padding: 0.5rem;
     }
     
+    .mainContent.shifted {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+    }
+
     .mobileMenu {
         display: flex;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mainContent {
+        padding: 0.5rem;
+    }
+
+    .mainContent.shifted {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sideBar {
+        position: fixed;
+        z-index: 1000;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mainContent {
+        padding: 0.25rem;
     }
 }

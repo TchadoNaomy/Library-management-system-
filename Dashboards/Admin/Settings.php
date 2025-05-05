@@ -134,12 +134,13 @@ $Role = $_SESSION['user_role'] ?? '';
                                                             <h3>Profile Picture Settings</h3>
                                                         </div>
                                                         <div class="card-content">
-                                                            <div class="notification-options">
-                                                                <label class="switch">
-                                                                    <span class="slider">Change profile picture</span>
-                                                                    <button class="updatepicbtn">update Profile Picture</button>
-                                                                </label>
-                                                            </div>
+                                                            <form id="profile-pic-form" enctype="multipart/form-data">
+                                                                <div class="file-input-container">
+                                                                    <input type="file" id="profile_image" name="profile_image" accept="image/*" required>
+                                                                    <small>Supported formats: JPG, JPEG, PNG. Max size: 5MB</small>
+                                                                </div>
+                                                                <button type="submit" class="updatepicbtn">Update Profile Picture</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                     </div>
@@ -150,6 +151,7 @@ $Role = $_SESSION['user_role'] ?? '';
 <script src="../../Assets/Scripts/displayMenu.js"></script>
 <script src="../../Assets/Scripts/updateTitle.js"></script>
 <script src="../../Assets/Scripts/themeManager.js"></script>
+<script src="../../Assets/Scripts/profilePictureManager.js"></script>
 
 <!-- script to prevent backarrow functionality if user is logged in -->
 <!-- <script src="../../Assets//Scripts/stateMaintaine.js"></script> -->
