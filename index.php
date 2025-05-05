@@ -43,20 +43,33 @@ $Role = $_SESSION['user_role'] ?? '';
         </div>
     </header>
         <main>
-            <section>
-                <h2>About Us</h2>
-                <p>This is a simple home page template for demonstration purposes.</p>
+            <section class="hero">
+                <h2>Welcome to Genesia Libraria</h2>
+                <p>Your one-stop solution for all your library needs.</p>
+                <a href="Catalog.php" class="btn">Explore Now</a>
             </section>
-            <section>
-                <h2>Services</h2>
-                <?php
-                echo $Role;
-                ?>
-                <p>We offer a range of services to meet your needs.</p>
+
+            <section class="features">
+                <h2>Features</h2>
+                <div class="feature-item">
+                    <i class="fas fa-book"></i>
+                    <h3>Wide Selection of Books</h3>
+                    <p>Explore our extensive collection of books across various genres.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-user"></i>
+                    <h3>User-Friendly Interface</h3>
+                    <p>Navigate through our platform with ease and find what you need quickly.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our support team is here to assist you anytime, anywhere.</p>
+                </div>
             </section>
         </main>
-            <footer>
-                <p>&copy; 2025 My Website</p>
+            <footer style="text-transform: capitalize;">
+                <p>&copy; 2025 library management system group 2 all right reserved</p>
             </footer>
 </body>
 </html>

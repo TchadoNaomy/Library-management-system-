@@ -112,5 +112,49 @@
         border: 5px solid #2C3E50;
     }
 
+    /* .mapContainer {
+        height: auto;
+        width: 100%;
+      }
+      .cards > div {
+        width: 80%;
+      }
 
+      .Container {
+        flex-direction: column;
+      }
+      .about, .mapContainer {
+        margin-top: 20px;
+      } */
 
+      /* @media (max-width: 768px) {
+        .Container {
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+        }
+        
+        .about, .mapContainer {
+          width: 90%;
+        }
+        
+        .cards {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .hero {
+          padding: 20px 10px;
+        }
+        
+        .call-btn {
+          width: 100%;
+          text-align: center;
+        }
+        
+        .about .images img, .images img {
+          width: 100%;
+        }
+      } */

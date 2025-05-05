@@ -12,6 +12,7 @@ $Role = $_SESSION['user_role'] ?? '';
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +21,10 @@ $Role = $_SESSION['user_role'] ?? '';
     <link rel="stylesheet" href="../../Assets/Styles/User.css">
     <link rel="stylesheet" href="../../Assets/Styles/Theme.css">
     <link rel="stylesheet" href="../../Assets/fontawesome/css/all.css">
-    <title>Dashboard</title>
+    <title>Favourite Books</title>
 </head>
 <body>
-    <div class="sideBar">
+<div class="sideBar">
         <div class="profilePic">
             <?php if (isset($_SESSION['profile_image'])): ?>
                 <img src="data:image/jpeg;base64,<?php echo $_SESSION['profile_image']; ?>" alt="Profile">
@@ -36,9 +37,9 @@ $Role = $_SESSION['user_role'] ?? '';
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="../User/User.php"><i class="fas fa-qrcode" ></i>  Dashboard </a></li>
+                <li><a href="../User/User.php"><i class="fas fa-qrcode" ></i>  Dashboard </a></li>
                 <li><a href="../../Catalog.php"><i class="fas fa-file-lines" class="icon"></i> Catalog </a></li>
-                <li><a href="Favourite.php"><i class="fas fa-star" class="icon"></i> favourite Books </a></li>
+                <li class="active"><a href="Favourite.php"><i class="fas fa-star" class="icon"></i> favourite Books </a></li>
                 <li><a href="./Settings.php"><i class="fas fa-gear" class="icon"></i>  Settings </a></li>
                 <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i>  LogOut </a></li>
             </ul>
@@ -48,7 +49,8 @@ $Role = $_SESSION['user_role'] ?? '';
                 All rights reserved </p>
         </footer>
     </div>
-                        <div class="mainContent">
+
+    <div class="mainContent">
                             <nav>
                                 <div class="mobileMenu">
                                     <i class="fas fa-bars fa-2x"></i>
@@ -69,12 +71,10 @@ $Role = $_SESSION['user_role'] ?? '';
                                     </main>
                         </div>
 
- <!-- script to prevent backarrow functionality if user is logged in -->
- <!-- <script src="../../Assets//Scripts/stateMaintaine.js"></script> -->
-</body>
-<!-- other scripts -->
-<script src="../../Assets/Scripts/displayMenu.js"></script>
-<script src="../../Assets/Scripts/updateTitle.js"></script>
-<script src="../../Assets/Scripts/themeManager.js"></script>
 
+
+    <script src="../../Assets/Scripts/displayMenu.js"></script>
+    <script src="../../Assets/Scripts/updateTitle.js"></script>
+    <script src="../../Assets/Scripts/themeManager.js"></script>
+</body>
 </html>

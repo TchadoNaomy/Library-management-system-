@@ -58,6 +58,15 @@
     cursor: pointer;
 }
 
+.updatepicbtn{
+    padding: 10px 20px;
+    background-color: #3498DB;
+    border: 1px solid #3498DB;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .settings-container {

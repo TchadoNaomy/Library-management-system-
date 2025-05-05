@@ -119,7 +119,12 @@ unset($_SESSION['errors']);
             <p>Already have an account?<button class="togglebtn">Login</button></p>
         </div>
         <p style="margin-top: 20px;">Back to home page <a href="index.php" 
-        style="text-decoration: none; padding:10px; background-color:#3498DB; border-radius:20px; cursor:pointer;">Home</a></p>
+        style="
+        text-decoration: none; 
+        padding:10px; 
+        background-color:#3498DB; 
+        border-radius:20px; 
+        cursor:pointer;">Home</a></p>
     </div>
 
 

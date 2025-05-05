@@ -27,7 +27,7 @@ body {
     height: 80vh;
     max-height: fit-content;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     scroll-behavior: smooth;
   }
 
@@ -110,10 +110,45 @@ body {
   }
   
   .availability #fav:hover{
-    background-color: #f5f5dc;
-    color: black;
+    background-color: #e91e63;
+    color: rgb(250, 249, 249);
   }
 
   .availability #downld{
     background-color: #c9c4b5;
+  }
+  
+#fav:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+  @media (max-width: 768px) {
+    .catalogue {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  
+    .book-card img {
+      max-width: 100%;
+      height: 150px;
+    }
+  
+    .availability {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .catalogue {
+      grid-template-columns: 1fr;
+    }
+  
+    .search-bar input {
+      width: 100%;
+    }
+  
+    .book-card img {
+      height: 120px;
+    }
   }

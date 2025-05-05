@@ -40,7 +40,7 @@ $Role = $_SESSION['user_role'] ?? '';
             <ul>
             <li ><a href="../User/User.php"><i class="fas fa-qrcode" ></i>  Dashboard </a></li>
                 <li><a href="../../Catalog.php"><i class="fas fa-file-lines" class="icon"></i> Catalog </a></li>
-                <li><a href=""><i class="fas fa-star" class="icon"></i> favourite Books </a></li>
+                <li><a href="Favourite.php"><i class="fas fa-star" class="icon"></i> favourite Books </a></li>
                 <li class="active"><a href="./Settings.php"><i class="fas fa-gear" class="icon"></i>  Settings </a></li>
                 <li><a href="../../Backend/logout.php"><i class="fas fa-sign-out-alt"></i>  LogOut </a></li>
               
@@ -135,7 +135,7 @@ $Role = $_SESSION['user_role'] ?? '';
                                                             <div class="notification-options">
                                                                 <label class="switch">
                                                                     <span class="slider">Change profile picture</span>
-                                                                    <button >update Profile Picture</button>
+                                                                    <button class="updatepicbtn">update Profile Picture</button>
                                                                 </label>
                                                             </div>
                                                         </div>

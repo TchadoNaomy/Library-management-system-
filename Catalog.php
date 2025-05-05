@@ -18,6 +18,9 @@ $Role = $_SESSION['user_role'] ?? '';
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Genesia Libraria - Your online library for books and resources.">
+  <meta name="keywords" content="books, library, online library, Genesia Libraria">
   <title>Catalogue</title>
   <link rel="stylesheet" href="Assets/fontawesome/css/all.css">
   <link rel="stylesheet" href="Assets/Styles/Catalog.css">
@@ -48,7 +51,8 @@ $Role = $_SESSION['user_role'] ?? '';
 
   <div class="catalogue" id="bookCatalogue">
     <?php foreach ($info as $book): ?>
-    <div class="book-card">
+    <div class="book-card book-container">
+      <input type="hidden" name="book_id" value="<?php echo $book['book_id']; ?>">
     <?php if (!empty($book['book_cover'])): ?>
       <img src="data:image/jpeg;base64,<?php echo $book['book_cover']; ?>" 
       alt="Book Cover" class="cover-thumbnail">
@@ -61,7 +65,10 @@ $Role = $_SESSION['user_role'] ?? '';
       <div class="book-genre"><?php echo htmlspecialchars($book['genre']) ?></div>
       <div class="book-desc"><?php echo htmlspecialchars($book['description']) ?></div>
       <div class="availability">
-       <abbr title="Add to favourite"><i class="fas fa-star" id="fav"></i></abbr> 
+        <abbr title="Add to favourite" class="fav-container">
+            <input type="hidden" name="book_id" value="<?php echo $book['book_id']; ?>">
+            <i class="fas fa-star" id="fav"></i>
+        </abbr> 
        <abbr title="Download to read later"><i class="fas fa-download" id="downld"></i></abbr>
         <button>Read Now</button></div>
     </div>
@@ -86,6 +93,8 @@ $Role = $_SESSION['user_role'] ?? '';
       });
     });
   </script>
+
+  <script src="./Assets/Scripts/FavouriteBook.js"></script>
 
 </body>
 </html>

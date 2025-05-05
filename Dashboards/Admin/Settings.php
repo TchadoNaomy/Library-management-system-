@@ -137,7 +137,7 @@ $Role = $_SESSION['user_role'] ?? '';
                                                             <div class="notification-options">
                                                                 <label class="switch">
                                                                     <span class="slider">Change profile picture</span>
-                                                                    <button >update Profile Picture</button>
+                                                                    <button class="updatepicbtn">update Profile Picture</button>
                                                                 </label>
                                                             </div>
                                                         </div>
